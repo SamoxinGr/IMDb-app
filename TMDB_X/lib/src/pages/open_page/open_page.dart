@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tmdb_x/src/pages/open_page/cubit/open_cubit.dart';
-import 'package:tmdb_x/src/widgets/most_popular_movie_card.dart';
-import 'package:tmdb_x/src//widgets/most_popular_tvs_card.dart';
-import 'package:tmdb_x/src/widgets/preview_card.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
-
+import '../open_page/cubit/open_cubit.dart';
+import '../../widgets/most_popular_movie_card.dart';
+import '../../widgets/most_popular_tvs_card.dart';
+import '../../widgets/preview_card.dart';
 import '../../widgets/preview_card_releases.dart';
 import '../../widgets/preview_card_box.dart';
 
@@ -246,7 +245,7 @@ class _OpenPage extends StatelessWidget {
                                         ),
                                         Tab(
                                           child: Text(
-                                            "Coming Soon",
+                                            "Best BoxOffice",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 color: Colors.white,

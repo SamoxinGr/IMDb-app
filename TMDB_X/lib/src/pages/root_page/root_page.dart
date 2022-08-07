@@ -21,7 +21,11 @@ class _RootPageState extends State<RootPage> {
   int _pageIndex;
   _RootPageState(pageIndex) : _pageIndex = pageIndex;
   GlobalKey bottomNavigationKey = GlobalKey();
-  List<Widget> pageList = <Widget>[OpenPage(), SearchPage(), WatchListPage()];
+  List<Widget> pageList = <Widget>[
+    SearchPage(),
+    OpenPage(),
+    WatchListPage()
+  ];
   @override
   Widget build(BuildContext context) {
     if (_pageIndex == null) {
@@ -42,13 +46,19 @@ class _RootPageState extends State<RootPage> {
           opacity: 0.8,
           items: [
             CustomNavigationBarItem(
-              icon: Icon(Feather.film,),
+              icon: Icon(
+                Feather.film,
+              ),
             ),
             CustomNavigationBarItem(
-              icon: Icon(AntDesign.search1,),
+              icon: Icon(
+                AntDesign.search1,
+              ),
             ),
             CustomNavigationBarItem(
-              icon: Icon(AntDesign.book,),
+              icon: Icon(
+                AntDesign.book,
+              ),
             ),
           ],
           currentIndex: _pageIndex,
@@ -61,4 +71,3 @@ class _RootPageState extends State<RootPage> {
         ));
   }
 }
-

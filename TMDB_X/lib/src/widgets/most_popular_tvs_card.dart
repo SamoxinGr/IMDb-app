@@ -8,18 +8,17 @@ Widget mptvsCard(
   final double height = MediaQuery.of(context).size.height;
   return Card(
     shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(15))),
+        borderRadius: BorderRadius.all(Radius.circular(16))),
     color: Color.fromRGBO(36, 42, 50, 1),
     margin: EdgeInsets.all(5),
     elevation: 5,
-    child: Container(
-      width: width / 3.5,
-      //height: height / 4,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(15)),
-        image: DecorationImage(
-          image: NetworkImage("${item.image}"),
+    child: Center(
+      //widthFactor: width / 415,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: Image.network("${item.image}",
           fit: BoxFit.fill,
+          filterQuality: FilterQuality.high,
         ),
       ),
     ),
