@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tmdb_x/src/models/BoxOffice.dart';
-import 'package:tmdb_x/src/pages/open_page/cubit/open_cubit.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import '../models/BoxOffice.dart';
+import '../models/ImagesForBoxOffice.dart';
+import '../pages/open_page/cubit/open_cubit.dart';
 
-Widget preview_boxCard(BoxOffice item, BuildContext context, OpenLoadedState state) {
+Widget preview_boxCard(
+    BoxOffice item, BuildContext context, OpenLoadedState state) {
   final double width = MediaQuery.of(context).size.width;
   final double height = MediaQuery.of(context).size.height;
   return Card(
@@ -25,14 +27,14 @@ Widget preview_boxCard(BoxOffice item, BuildContext context, OpenLoadedState sta
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Container(
-                  width: width / 4,
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade900,
-                      borderRadius: const BorderRadius.all(Radius.circular(15)),
-                      /*image: DecorationImage(
-                          image: NetworkImage("${item.image}"),
-                          fit: BoxFit.fill)*/),
-                ),
+                    decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(15),
+                  ),
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/nopicture.jpg'),
+                      fit: BoxFit.fill),
+                )),
               ),
             ),
           ),
@@ -111,20 +113,23 @@ Widget preview_boxCard(BoxOffice item, BuildContext context, OpenLoadedState sta
                         Flexible(
                           flex: 2,
                           child: Container(
-                            padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
+                            padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
                             alignment: Alignment.bottomRight,
                             child: IconButton(
                                 alignment: Alignment.bottomRight,
-                                onPressed: () {print("Check");},
-                                icon: Icon(AntDesign.checkcircle)),
-                          ),)
+                                onPressed: () {
+                                  print("Check");
+                                },
+                                icon: const Icon(AntDesign.checkcircle)),
+                          ),
+                        )
                       ],
                     ),
                   ),
                   Row(
                     children: [
                       Flexible(
-                        flex:3,
+                        flex: 3,
                         child: ListTile(
                           title: const Text(
                             "Bank: ",

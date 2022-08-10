@@ -1,69 +1,43 @@
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
+import '../api/auth.dart' as auth;
 import 'package:http/http.dart';
-import 'package:tmdb_x/src/models/MostPopularMovie.dart';
-import 'package:tmdb_x/src/models/MostPopularTVs.dart';
+import '../models/ImagesForBoxOffice.dart';
+import '../models/MostPopular.dart';
 import '../models/BoxOffice.dart';
 import '../models/Top250.dart';
 import '../models/InTheaters.dart';
-import '../api/auth.dart' as auth;
 
-Future<List<MostPopularMovie>> getMostPopularMovie() async {
+// horizontal wheels
+Future<List<MostPopular>> getMostPopular(String choice) async {
 
-  final Map<String, String> getMostPopularMovieHeaders = {
+  final Map<String, String> getMostPopularHeaders = {
     "Accept": "application/json",
     "Content-Type": "application/json",
   };
 
-  final Response getMostPopularMovieResponse = await http.get(
-      Uri.https('${auth.baseUrl}', '/en/API/MostPopularMovies/${auth.uToken}'),
-      headers: getMostPopularMovieHeaders);
+  final Response getMostPopularResponse = await http.get(
+      Uri.https(auth.baseUrl, '/en/API/$choice/${auth.uToken}'),
+      headers: getMostPopularHeaders);
 
-  if (getMostPopularMovieResponse.statusCode == 200) {
-    List<MostPopularMovie> myList = [];
-    int numberOfMostPopularMovie = 10;
+  if (getMostPopularResponse.statusCode == 200) {
+    List<MostPopular> myList = [];
+    int numberOfMostPopular = 10;
     // If the server did return a 200 CREATED response,
-    var data = convert.jsonDecode(getMostPopularMovieResponse.body);
-    for (int i = 0; i < numberOfMostPopularMovie; i++) {
-      myList.add(MostPopularMovie.fromJson(data["items"][i]));
+    var data = convert.jsonDecode(getMostPopularResponse.body);
+    for (int i = 0; i < numberOfMostPopular; i++) {
+      myList.add(MostPopular.fromJson(data["items"][i]));
     }
     return myList;
   } else {
     // If the server did not return a 200 CREATED response,
-    var statusCode = getMostPopularMovieResponse.statusCode;
+    var statusCode = getMostPopularResponse.statusCode;
     throw Exception(
         'Failed to get Movies USER response. Status code = $statusCode');
   }
 }
 
-Future<List<MostPopularTVs>> getMostPopularTVs() async {
-
-  final Map<String, String> getMostPopularTVsHeaders = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-  };
-
-  final Response getMostPopularTVsResponse = await http.get(
-      Uri.https('${auth.baseUrl}', '/en/API/MostPopularTVs/${auth.uToken}'),
-      headers: getMostPopularTVsHeaders);
-
-  if (getMostPopularTVsResponse.statusCode == 200) {
-    List<MostPopularTVs> myList = [];
-    int numberOfMostPopularTVs = 10;
-    // If the server did return a 200 CREATED response,
-    var data = convert.jsonDecode(getMostPopularTVsResponse.body);
-    for (int i = 0; i < numberOfMostPopularTVs; i++) {
-      myList.add(MostPopularTVs.fromJson(data["items"][i]));
-    }
-    return myList;
-  } else {
-    // If the server did not return a 200 CREATED response,
-    var statusCode = getMostPopularTVsResponse.statusCode;
-    throw Exception(
-        'Failed to get Movies USER response. Status code = $statusCode');
-  }
-}
-
+// top 250 imdb movies and tvs for tabbar
 Future<List<Top250>> getTop250(String choice) async {
 
   final Map<String, String> getTop250Headers = {
@@ -72,7 +46,7 @@ Future<List<Top250>> getTop250(String choice) async {
   };
 
   final Response getTop250Response = await http.get(
-      Uri.https('${auth.baseUrl}', '/en/API/Top250$choice/${auth.uToken}'),
+      Uri.https(auth.baseUrl, '/en/API/Top250$choice/${auth.uToken}'),
       headers: getTop250Headers);
 
   if (getTop250Response.statusCode == 200) {
@@ -92,6 +66,7 @@ Future<List<Top250>> getTop250(String choice) async {
   }
 }
 
+// news in theaters for tabbar
 Future<List<InTheaters>> getInTheaters() async {
 
   final Map<String, String> getInTheatersHeaders = {
@@ -100,7 +75,7 @@ Future<List<InTheaters>> getInTheaters() async {
   };
 
   final Response getInTheatersResponse = await http.get(
-      Uri.https('${auth.baseUrl}', '/en/API/InTheaters/${auth.uToken}'),
+      Uri.https(auth.baseUrl, '/en/API/InTheaters/${auth.uToken}'),
       headers: getInTheatersHeaders);
 
   if (getInTheatersResponse.statusCode == 200) {
@@ -120,6 +95,7 @@ Future<List<InTheaters>> getInTheaters() async {
   }
 }
 
+// boxoffice for tabbar
 Future<List<BoxOffice>> getBoxOffice() async {
 
   final Map<String, String> getBoxOfficeHeaders = {
@@ -128,12 +104,12 @@ Future<List<BoxOffice>> getBoxOffice() async {
   };
 
   final Response getBoxOfficeResponse = await http.get(
-      Uri.https('${auth.baseUrl}', '/en/API/BoxOfficeAllTime/${auth.uToken}'),
+      Uri.https(auth.baseUrl, '/en/API/BoxOfficeAllTime/${auth.uToken}'),
       headers: getBoxOfficeHeaders);
 
   if (getBoxOfficeResponse.statusCode == 200) {
     List<BoxOffice> myList = [];
-    int numberOfBoxOffice = 10;
+    int numberOfBoxOffice = 5;
     // If the server did return a 200 CREATED response,
     var data = convert.jsonDecode(getBoxOfficeResponse.body);
     for (int i = 0; i < numberOfBoxOffice; i++) {
@@ -144,6 +120,38 @@ Future<List<BoxOffice>> getBoxOffice() async {
     // If the server did not return a 200 CREATED response,
     var statusCode = getBoxOfficeResponse.statusCode;
     throw Exception(
-        'Failed to get Movies USER response. Status code = $statusCode');
+        'Failed to get Movies response. Status code = $statusCode');
   }
 }
+
+// need to take picture of movies from another API (in progress)
+Future<String?> getImageForBox(String? id_imdb) async {
+
+  final Map<String, String> getImageForBoxbody = {
+    'token': auth.kinoToken,
+    'search': '${id_imdb}',
+    'field': 'externalId.imdb',
+  };
+
+  final Map<String, String> getImageForBoxHeaders = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+  };
+
+  final Response getImageForBoxResponse = await http.get(
+      Uri.https('api.kinopoisk.dev', '/movie', getImageForBoxbody),
+      headers: getImageForBoxHeaders);
+
+  if (getImageForBoxResponse.statusCode == 200) {
+    // If the server did return a 200 CREATED response,
+    var data = convert.jsonDecode(getImageForBoxResponse.body);
+    ImageForBox link = ImageForBox.fromJson(data['poster']);
+    print(link.poster);
+    return link.poster;
+  } else {
+    // If the server did not return a 200 CREATED response,
+    var statusCode = getImageForBoxResponse.statusCode;
+    throw Exception(
+        'Failed to get Movies USER response. Status code = $statusCode');
+  }
+}  // in work

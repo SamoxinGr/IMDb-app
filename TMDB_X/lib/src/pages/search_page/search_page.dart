@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
-import 'package:tmdb_x/src/pages/search_page/cubit/search_cubit.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:tmdb_x/src/utils/easy_search.dart';
+import 'cubit/search_cubit.dart';
+import '../../utils/easy_search.dart';
+
+// IN PROGRESS  (Coming in the end of August)
 
 class SearchPage extends StatelessWidget {
   const SearchPage({Key? key}) : super(key: key);

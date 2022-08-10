@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
-import 'package:tmdb_x/src/pages/watchlist_page/cubit/watch_list_cubit.dart';
+import 'cubit/watch_list_cubit.dart';
 
+// IN PROGRESS (coming in the end of September)
 
 class WatchListPage extends StatelessWidget {
   const WatchListPage({Key? key})

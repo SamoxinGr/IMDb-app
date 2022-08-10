@@ -1,10 +1,10 @@
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import '../open_page/open_page.dart';
 import '../search_page/search_page.dart';
 import '../watchlist_page/watch_list_page.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 
 // ignore: must_be_immutable
 class RootPage extends StatefulWidget {
@@ -22,8 +22,8 @@ class _RootPageState extends State<RootPage> {
   _RootPageState(pageIndex) : _pageIndex = pageIndex;
   GlobalKey bottomNavigationKey = GlobalKey();
   List<Widget> pageList = <Widget>[
-    SearchPage(),
     OpenPage(),
+    SearchPage(),
     WatchListPage()
   ];
   @override

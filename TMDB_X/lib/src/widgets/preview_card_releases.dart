@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tmdb_x/src/models/InTheaters.dart';
-import 'package:tmdb_x/src/pages/open_page/cubit/open_cubit.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import '../models/InTheaters.dart';
+import '../pages/open_page/cubit/open_cubit.dart';
 
 Widget preview_releaseCard(InTheaters item, BuildContext context, OpenLoadedState state) {
   final double width = MediaQuery.of(context).size.width;
@@ -25,7 +25,7 @@ Widget preview_releaseCard(InTheaters item, BuildContext context, OpenLoadedStat
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Container(
-                  width: width / 4,
+                  width: width / 3.3,
                   decoration: BoxDecoration(
                       color: Colors.grey.shade500,
                       borderRadius: const BorderRadius.all(Radius.circular(15)),
@@ -112,12 +112,12 @@ Widget preview_releaseCard(InTheaters item, BuildContext context, OpenLoadedStat
                         Flexible(
                           flex: 2,
                           child: Container(
-                            padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
+                            padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
                             alignment: Alignment.bottomRight,
                             child: IconButton(
                                 alignment: Alignment.bottomRight,
                                 onPressed: () {print("Check");},
-                                icon: Icon(AntDesign.checkcircle)),
+                                icon: const Icon(AntDesign.checkcircle)),
                           ),)
                       ],
                     ),

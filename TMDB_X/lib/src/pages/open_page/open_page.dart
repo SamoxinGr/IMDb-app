@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
-import '../open_page/cubit/open_cubit.dart';
+import 'cubit/open_cubit.dart';
 import '../../widgets/most_popular_movie_card.dart';
 import '../../widgets/most_popular_tvs_card.dart';
 import '../../widgets/preview_card.dart';
@@ -28,10 +28,10 @@ class _OpenPage extends StatelessWidget {
     return BlocBuilder<OpenCubit, OpenState>(builder: (context, state) {
       if (state is OpenInitial) {
         if (1 == 2) {
-          print("stooooooooop,  Oh, no it's ok");
+          print("rofl if else");
           return Container();
         } else {
-          //IMPORTANT
+          //IMPORTANT      rework in future
           print("state is initial --> loadOpen");
           context.read<OpenCubit>().loadOpen();
           return RefreshIndicator(
@@ -92,9 +92,9 @@ class _OpenPage extends StatelessWidget {
               centerTitle: true,
             ),
             body: Container(
-              color: Color.fromRGBO(36, 42, 50, 1),
+              color: const Color.fromRGBO(36, 42, 50, 1),
               child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
+                physics: const AlwaysScrollableScrollPhysics(),
                 controller: _controller,
                 child: Column(
                   children: [
@@ -119,7 +119,8 @@ class _OpenPage extends StatelessWidget {
                     ),
                     Container(
                       height: height / 4,
-                      child: ListView.builder( // Movies wheel
+                      child: ListView.builder(
+                          // Movies wheel
                           shrinkWrap: true,
                           itemCount: state.mpmList.length,
                           scrollDirection: Axis.horizontal,
@@ -151,7 +152,8 @@ class _OpenPage extends StatelessWidget {
                     ),
                     Container(
                       height: height / 4,
-                      child: ListView.builder(  // TVs wheel
+                      child: ListView.builder(
+                          // TVs wheel
                           shrinkWrap: true,
                           itemCount: state.mptvsList.length,
                           scrollDirection: Axis.horizontal,
@@ -266,7 +268,7 @@ class _OpenPage extends StatelessWidget {
                           body: TabBarView(
                             children: [
                               Container(
-                                color: Color.fromRGBO(36, 42, 50, 1),
+                                color: const Color.fromRGBO(36, 42, 50, 1),
                                 child: ListView.builder(
                                   shrinkWrap: true,
                                   itemCount: state.movtopList.length,
@@ -274,8 +276,10 @@ class _OpenPage extends StatelessWidget {
                                     return InkWell(
                                         onTap: () =>
                                             print("Open Movie Page in Future"),
-                                        child: previewCard(state.movtopList[index],
-                                            context, state));
+                                        child: previewCard(
+                                            state.movtopList[index],
+                                            context,
+                                            state));
                                   },
                                 ),
                               ),
@@ -287,7 +291,10 @@ class _OpenPage extends StatelessWidget {
                                     return InkWell(
                                         onTap: () =>
                                             print("Open TVsPage in Future"),
-                                        child: previewCard(state.tvstopList[index], context, state));
+                                        child: previewCard(
+                                            state.tvstopList[index],
+                                            context,
+                                            state));
                                   },
                                 ),
                               ),
@@ -299,8 +306,10 @@ class _OpenPage extends StatelessWidget {
                                     return InkWell(
                                         onTap: () =>
                                             print("Open TVsPage in Future"),
-                                        child:
-                                            preview_releaseCard(state.theaterList[index], context, state));
+                                        child: preview_releaseCard(
+                                            state.theaterList[index],
+                                            context,
+                                            state));
                                   },
                                 ),
                               ),
@@ -310,10 +319,11 @@ class _OpenPage extends StatelessWidget {
                                   itemCount: state.boxList.length,
                                   itemBuilder: (context, index) {
                                     return InkWell(
-                                        onTap: () =>
-                                            print("Picture in Future"),
-                                        child:
-                                            preview_boxCard(state.boxList[index], context, state));
+                                        onTap: () => print("Picture in Future"),
+                                        child: preview_boxCard(
+                                            state.boxList[index],
+                                            context,
+                                            state));
                                   },
                                 ),
                               )
@@ -334,8 +344,7 @@ class _OpenPage extends StatelessWidget {
 
       if (state is OpenErrorState) {
         // Throw error if state is UserError
-        return const OpenPage(); //ErrorPage(
-        //exceptionPageName: UserTabPage(), errorMessage: state.errorMessage);
+        return const OpenPage(); //ErrorPage in progress
       } else
         return Container();
     });

@@ -8,8 +8,8 @@ class OpenInitial extends OpenState {
 }
 
 class OpenLoadedState extends OpenState {
-  final List<MostPopularMovie> mpmList;
-  final List<MostPopularTVs> mptvsList;
+  final List<MostPopular> mpmList;
+  final List<MostPopular> mptvsList;
   final List<Top250> movtopList;
   final List<Top250> tvstopList;
   final List<InTheaters> theaterList;

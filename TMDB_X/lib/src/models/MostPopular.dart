@@ -1,17 +1,17 @@
-class MostPopularMovie {
+class MostPopular {
   String? id;
   String? title;
   String? image;
 
 
-  MostPopularMovie({
+  MostPopular({
     required this.id,
     required this.title,
     required this.image,
   });
 
-  factory MostPopularMovie.fromJson(Map<String, dynamic> json) {
-    return MostPopularMovie(
+  factory MostPopular.fromJson(Map<String, dynamic> json) {
+    return MostPopular(
       id: json['id'],
       title: json['title'],
       image: json['image']

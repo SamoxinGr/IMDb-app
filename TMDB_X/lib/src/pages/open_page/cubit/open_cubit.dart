@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:tmdb_x/src/api/requests.dart';
+import '../../../api/requests.dart';
 import '../../../models/BoxOffice.dart';
+import '../../../models/ImagesForBoxOffice.dart';
 import '../../../models/InTheaters.dart';
-import '../../../models/MostPopularMovie.dart';
-import '../../../models/MostPopularTVs.dart';
+import '../../../models/MostPopular.dart';
 import '../../../models/Top250.dart';
 
 part 'open_state.dart';
@@ -26,8 +26,8 @@ class OpenCubit extends Cubit<OpenState> {
       /*if (isClosed == false) {
         emit(OpenLoadedState());
       }*/
-      final popular_movie_info = await getMostPopularMovie();
-      final popular_tvs_info = await getMostPopularTVs();
+      final popular_movie_info = await getMostPopular("MostPopularMovies");
+      final popular_tvs_info = await getMostPopular("MostPopularTVs");
       final top250_movies = await getTop250("Movies");
       final top250_tvs = await getTop250("TVs");
       final in_theatres = await getInTheaters();
