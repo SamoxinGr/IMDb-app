@@ -10,14 +10,17 @@ This page contains information about the most popular films and TV series presen
 </ul>
 
 </p> <p align="left">
-<img src="TMDB_X/assets/images/op1.png" alt="application" width="200" />
-<img src="TMDB_X/assets/images/op2.png" alt="application" width="200" />
+<img src="assets/images/op1.png" alt="application" width="200" />
+<img src="assets/images/op2.png" alt="application" width="200" />
+<img src="assets/images/op3.png" alt="application" width="200" />
 <p>
 
 <b> Currently in development:</b></br>
 <ul>
 <li><b>Search page: </b></br>
-Search for movies, TV series, actors, etc. using the IMDB database.
+Search for movies, TV series, actors, etc. using the IMDB database. Movie searching is available, TVs searching coming soon.
+<li><b>Error page: </b></br>
+Error page is ready without decoration.
 <li><b>WatchList page:</b></br>
 The page where the movies will be viewed.
 </ul>

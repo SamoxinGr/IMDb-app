@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
+import '../error_page.dart';
 import 'cubit/open_cubit.dart';
 import '../../widgets/most_popular_movie_card.dart';
 import '../../widgets/most_popular_tvs_card.dart';
@@ -13,7 +14,7 @@ class OpenPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (_) => OpenCubit(), child: new _OpenPage());
+    return BlocProvider(create: (_) => OpenCubit(), child: const _OpenPage());
   }
 }
 
@@ -35,6 +36,7 @@ class _OpenPage extends StatelessWidget {
           print("state is initial --> loadOpen");
           context.read<OpenCubit>().loadOpen();
           return RefreshIndicator(
+            color: const Color.fromRGBO(36, 42, 50, 1),
             child: Scaffold(
               appBar: ScrollAppBar(
                 controller: _controller,
@@ -72,6 +74,9 @@ class _OpenPage extends StatelessWidget {
       if (state is OpenLoadedState) {
         print("Loading Open");
         return RefreshIndicator(
+          backgroundColor: const Color.fromRGBO(36, 42, 50, 1),
+          color: Colors.white,
+          strokeWidth: height / 300,
           child: Scaffold(
             appBar: ScrollAppBar(
               controller: _controller,
@@ -344,7 +349,7 @@ class _OpenPage extends StatelessWidget {
 
       if (state is OpenErrorState) {
         // Throw error if state is UserError
-        return const OpenPage(); //ErrorPage in progress
+        return ErrorPage(); //ErrorPage in progress
       } else
         return Container();
     });

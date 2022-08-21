@@ -1,5 +1,6 @@
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
+import '../models/SearchResult.dart';
 import '../api/auth.dart' as auth;
 import 'package:http/http.dart';
 import '../models/ImagesForBoxOffice.dart';
@@ -121,6 +122,34 @@ Future<List<BoxOffice>> getBoxOffice() async {
     var statusCode = getBoxOfficeResponse.statusCode;
     throw Exception(
         'Failed to get Movies response. Status code = $statusCode');
+  }
+}
+
+// search
+Future<List<SearchResult>> getSearchList(String value) async {
+
+  final Map<String, String> getSearchHeaders = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+  };
+
+  final Response getSearchResponse = await http.get(
+      Uri.https(auth.baseUrl, '/en/API/SearchMovie/${auth.uToken}/$value'),
+      headers: getSearchHeaders);
+
+  if (getSearchResponse.statusCode == 200) {
+    List<SearchResult> searchList = [];
+    // If the server did return a 200 CREATED response,
+    var data = convert.jsonDecode(getSearchResponse.body);
+    for (int i = 0; i < data["results"].length; i++) {
+      searchList.add(SearchResult.fromJson(data["results"][i]));
+    }
+    return searchList;
+  } else {
+    // If the server did not return a 200 CREATED response,
+    var statusCode = getSearchResponse.statusCode;
+    throw Exception(
+        'Failed to get Movies USER response. Status code = $statusCode');
   }
 }
 

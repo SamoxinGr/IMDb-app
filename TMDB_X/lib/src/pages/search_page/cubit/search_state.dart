@@ -8,12 +8,12 @@ class SearchInitial extends SearchState {
 }
 
 class SearchLoadedState extends SearchState {
-  SearchLoadedState();
+  final List<SearchResult> searchList;
+  SearchLoadedState(this.searchList);
 }
 
 class SearchErrorState extends SearchState {
   final String errorMessage;
-
   SearchErrorState(this.errorMessage);
 }
 
