@@ -133,21 +133,31 @@ Future<List<SearchResult>> getSearchList(String value) async {
     "Content-Type": "application/json",
   };
 
-  final Response getSearchResponse = await http.get(
+  final Response getSearchMovieResponse = await http.get(
       Uri.https(auth.baseUrl, '/en/API/SearchMovie/${auth.uToken}/$value'),
       headers: getSearchHeaders);
 
-  if (getSearchResponse.statusCode == 200) {
+  final Response getSearchTVsResponse = await http.get(
+      Uri.https(auth.baseUrl, '/en/API/SearchSeries/${auth.uToken}/$value'),
+      headers: getSearchHeaders);
+
+  if (getSearchMovieResponse.statusCode == 200) {
     List<SearchResult> searchList = [];
     // If the server did return a 200 CREATED response,
-    var data = convert.jsonDecode(getSearchResponse.body);
-    for (int i = 0; i < data["results"].length; i++) {
-      searchList.add(SearchResult.fromJson(data["results"][i]));
+    var dataMovie = convert.jsonDecode(getSearchMovieResponse.body);
+    var dataTVs = convert.jsonDecode(getSearchTVsResponse.body);
+    int numberOfSearchMovie = (dataMovie["results"].length > 10) ? 10 : dataMovie["results"].length;
+    int numberOfSearchTVs = (dataTVs["results"].length > 10) ? 10 : dataTVs["results"].length;
+    for (int i = 0; i < numberOfSearchMovie; i++) {
+      searchList.add(SearchResult.fromJson(dataMovie["results"][i]));
+    }
+    for (int i = 0; i < numberOfSearchTVs; i++) {
+      searchList.add(SearchResult.fromJson(dataTVs["results"][i]));
     }
     return searchList;
   } else {
     // If the server did not return a 200 CREATED response,
-    var statusCode = getSearchResponse.statusCode;
+    var statusCode = getSearchMovieResponse.statusCode;
     throw Exception(
         'Failed to get Movies USER response. Status code = $statusCode');
   }

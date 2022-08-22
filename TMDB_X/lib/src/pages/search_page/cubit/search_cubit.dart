@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 import '../../../api/requests.dart';
 import '../../../models/SearchResult.dart';
 
@@ -20,14 +19,16 @@ class SearchCubit extends Cubit<SearchState> {
   Future<void> loadSearch(String value) async {
     print(value);
     try {
-        ///final user = await getUser((await UserSecureStorage.getTokenFromStorage())!, username);
-        final search_list = await getSearchList(value);
-        await Future.delayed(const Duration(milliseconds: 100));
-        emit(SearchLoadedState(search_list));
-        print('Search loaded');
+        if (value.length > 0) {
+          //await Future.delayed(const Duration(milliseconds: 200));
+          final search_list = await getSearchList(value);
+          emit(SearchLoadedState(search_list));
+          print('Search loaded');
+        }
+        else {emit(SearchInitial());}
     } catch (e){
       if (isClosed == false) {
-        emit(SearchErrorState('Failed User Load $e'));
+        emit(SearchErrorState());
       }
     }
   }

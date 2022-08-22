@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
+import '../../utils/app_text_theme.dart';
 import 'cubit/watch_list_cubit.dart';
 
 // IN PROGRESS (coming in the end of September)
@@ -43,17 +44,9 @@ class _WatchListPage extends StatelessWidget {
                 automaticallyImplyLeading: true,
                 //backgroundColor: const Color.fromRGBO(16,18,21, 1), // OLD Color
                 backgroundColor: const Color.fromRGBO(36, 42, 50, 1),
-                title: const Text(
+                title: Text(
                   "WatchList",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: "Kanit",
-                      shadows: <Shadow>[
-                        Shadow(
-                          color: Colors.black,
-                          blurRadius: 10,
-                        )
-                      ]),
+                  style: AppBarText(),
                 ),
                 centerTitle: true,
               ),
@@ -79,17 +72,9 @@ class _WatchListPage extends StatelessWidget {
               controller: _controller,
               //backgroundColor: const Color.fromRGBO(16,18,21, 1),  // OLD Color
               backgroundColor: const Color.fromRGBO(36, 42, 50, 1),
-              title: const Text(
+              title: Text(
                 "WatchList",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: "Kanit",
-                    shadows: <Shadow>[
-                      Shadow(
-                        color: Colors.black,
-                        blurRadius: 10,
-                      )
-                    ]),
+                style: AppBarText(),
               ),
               centerTitle: true,
             ),

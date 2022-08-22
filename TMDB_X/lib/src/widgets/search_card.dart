@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import '../pages/search_page/cubit/search_cubit.dart';
 import '../models/SearchResult.dart';
+import '../utils/app_text_theme.dart';
 
 Widget searchCard(SearchResult item, BuildContext context, SearchLoadedState state) {
   final double width = MediaQuery.of(context).size.width;
@@ -20,7 +21,7 @@ Widget searchCard(SearchResult item, BuildContext context, SearchLoadedState sta
       child: Row(
         children: [
           Flexible(
-            flex: 6,
+            flex: 5,
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.all(10),
@@ -46,33 +47,14 @@ Widget searchCard(SearchResult item, BuildContext context, SearchLoadedState sta
                   Flexible(
                     flex: 4,
                     child: ListTile(
-                      title: const Text(
+                      title: Text(
                         "Title:",
-                        style: TextStyle(
-                            color: Colors.white38,
-                            fontSize: 14,
-                            letterSpacing: 2,
-                            fontFamily: "Kanit",
-                            shadows: <Shadow>[
-                              Shadow(
-                                color: Colors.black,
-                                blurRadius: 10,
-                              )
-                            ]),
+                        style: HintTextInCard(),
                       ),
                       subtitle: Text("${item.title}",
                           softWrap: true,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontFamily: "Kanit",
-                              shadows: <Shadow>[
-                                Shadow(
-                                  color: Colors.black,
-                                  blurRadius: 10,
-                                )
-                              ])),
+                          style: AppBarText().copyWith(fontSize: 18)),
                     ),
                   ),
                   Flexible(

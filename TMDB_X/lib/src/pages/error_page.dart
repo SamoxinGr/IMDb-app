@@ -1,26 +1,38 @@
 import 'package:flutter/material.dart';
-
+import 'package:scroll_app_bar/scroll_app_bar.dart';
+import '../utils/app_text_theme.dart';
 
 // WITHOUT DECORATION
 // ignore: must_be_immutable
 class ErrorPage extends StatelessWidget {
-
-  ErrorPage(
-      {Key? key})
-      :
-        super(key: key);
+  const ErrorPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    ScrollController _controller = new ScrollController();
+    final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
     // handled errors opens dialog box instead new page
-    if ("_errorMessage".contains("NoSuchMethodError: The method '[]' was called on null")) {
-      return Scaffold(body: Container(child: Center(child: Text("Error"),),),);
-    }
-    if ("{_errorMessage".contains(
-        "Failed User Load Exception: Failed to get USER")) {
-      return Scaffold(body: Container(child: Center(child: Text("Error"),),),);
-    }
-    // else any other errors opens error dialog box
-    return Scaffold(body: Container(child: Center(child: Text("Error"),),),);
+    return Scaffold(
+      appBar: ScrollAppBar(
+        controller: _controller,
+        //backgroundColor: const Color.fromRGBO(16,18,21, 1),  // OLD Color
+        backgroundColor: const Color.fromRGBO(36, 42, 50, 1),
+        title: Text(
+          "Error",
+          style: AppBarText(),
+        ),
+        centerTitle: true,
+      ),
+      backgroundColor: Color.fromRGBO(36, 42, 50, 1),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text("Back"),
+        ),
+      ),
+    );
   }
 }

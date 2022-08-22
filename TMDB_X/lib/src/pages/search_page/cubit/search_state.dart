@@ -13,7 +13,7 @@ class SearchLoadedState extends SearchState {
 }
 
 class SearchErrorState extends SearchState {
-  final String errorMessage;
-  SearchErrorState(this.errorMessage);
+  SearchErrorState();
 }
+
 

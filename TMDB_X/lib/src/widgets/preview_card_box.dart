@@ -3,6 +3,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 import '../models/BoxOffice.dart';
 import '../models/ImagesForBoxOffice.dart';
 import '../pages/open_page/cubit/open_cubit.dart';
+import '../utils/app_text_theme.dart';
 
 Widget preview_boxCard(
     BoxOffice item, BuildContext context, OpenLoadedState state) {
@@ -47,33 +48,14 @@ Widget preview_boxCard(
                   Flexible(
                     flex: 2,
                     child: ListTile(
-                      title: const Text(
+                      title: Text(
                         "Title:",
-                        style: TextStyle(
-                            color: Colors.white38,
-                            fontSize: 14,
-                            letterSpacing: 2,
-                            fontFamily: "Kanit",
-                            shadows: <Shadow>[
-                              Shadow(
-                                color: Colors.black,
-                                blurRadius: 10,
-                              )
-                            ]),
+                        style: HintTextInCard(),
                       ),
                       subtitle: Text("${item.title}",
                           softWrap: true,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontFamily: "Kanit",
-                              shadows: <Shadow>[
-                                Shadow(
-                                  color: Colors.black,
-                                  blurRadius: 10,
-                                )
-                              ])),
+                          style: AppBarText().copyWith(fontSize: 18)),
                     ),
                   ),
                   Flexible(
@@ -83,31 +65,12 @@ Widget preview_boxCard(
                         Flexible(
                           flex: 2,
                           child: ListTile(
-                            title: const Text(
+                            title: Text(
                               "Release:",
-                              style: TextStyle(
-                                  color: Colors.white38,
-                                  fontSize: 14,
-                                  letterSpacing: 2,
-                                  fontFamily: "Kanit",
-                                  shadows: <Shadow>[
-                                    Shadow(
-                                      color: Colors.black,
-                                      blurRadius: 10,
-                                    )
-                                  ]),
+                              style: HintTextInCard(),
                             ),
                             subtitle: Text("${item.release}",
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontFamily: "Kanit",
-                                    shadows: <Shadow>[
-                                      Shadow(
-                                        color: Colors.black,
-                                        blurRadius: 10,
-                                      )
-                                    ])),
+                                style: AppBarText().copyWith(fontSize: 16)),
                           ),
                         ),
                         Flexible(
@@ -131,57 +94,29 @@ Widget preview_boxCard(
                       Flexible(
                         flex: 3,
                         child: ListTile(
-                          title: const Text(
+                          title: Text(
                             "Bank: ",
                             textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Colors.white38,
-                                fontSize: 14,
-                                letterSpacing: 2,
-                                fontFamily: "Kanit",
-                                shadows: <Shadow>[
-                                  Shadow(
-                                    color: Colors.black,
-                                    blurRadius: 10,
-                                  )
-                                ]),
+                            style: HintTextInCard(),
                           ),
                           subtitle: Text("${item.bank}",
                               overflow: TextOverflow.visible,
                               textAlign: TextAlign.left,
                               softWrap: false,
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontFamily: "Kanit",
-                                  shadows: <Shadow>[
-                                    Shadow(
-                                      color: Colors.black,
-                                      blurRadius: 10,
-                                    )
-                                  ])),
+                              style: AppBarText().copyWith(fontSize: 16)),
                         ),
                       ),
                       Flexible(
                         flex: 2,
                         child: ListTile(
-                          title: const Text(
+                          title: Text(
                             "Rank:",
                             textAlign: TextAlign.right,
-                            style: TextStyle(
-                              color: Colors.white38,
-                              fontSize: 14,
-                              letterSpacing: 2,
-                              fontFamily: "Kanit",
-                            ),
+                            style: HintTextInCard(),
                           ),
                           subtitle: Text("${item.rank}",
                               textAlign: TextAlign.right,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontFamily: "Kanit",
-                              )),
+                              style: AppBarText().copyWith(fontSize: 16)),
                         ),
                       ),
                     ],

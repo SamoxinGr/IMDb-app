@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
+import '../../utils/app_text_theme.dart';
 import '../error_page.dart';
 import 'cubit/open_cubit.dart';
 import '../../widgets/most_popular_movie_card.dart';
@@ -43,17 +44,9 @@ class _OpenPage extends StatelessWidget {
                 automaticallyImplyLeading: true,
                 //backgroundColor: const Color.fromRGBO(16,18,21, 1), // OLD Color
                 backgroundColor: const Color.fromRGBO(36, 42, 50, 1),
-                title: const Text(
+                title: Text(
                   "Hi, dude!",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: "Kanit",
-                      shadows: <Shadow>[
-                        Shadow(
-                          color: Colors.black,
-                          blurRadius: 10,
-                        )
-                      ]),
+                  style: AppBarText(),
                 ),
                 centerTitle: true,
               ),
@@ -82,17 +75,9 @@ class _OpenPage extends StatelessWidget {
               controller: _controller,
               //backgroundColor: const Color.fromRGBO(16,18,21, 1),  // OLD Color
               backgroundColor: const Color.fromRGBO(36, 42, 50, 1),
-              title: const Text(
+              title: Text(
                 "Hi, dude!",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: "Kanit",
-                    shadows: <Shadow>[
-                      Shadow(
-                        color: Colors.black,
-                        blurRadius: 10,
-                      )
-                    ]),
+                style: AppBarText(),
               ),
               centerTitle: true,
             ),
@@ -108,18 +93,9 @@ class _OpenPage extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       color: const Color.fromRGBO(36, 42, 50, 1),
                       height: height / 20,
-                      child: const Text(
+                      child: Text(
                         "Most Popular Movies today:",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "Kanit",
-                            fontSize: 20,
-                            shadows: <Shadow>[
-                              Shadow(
-                                color: Colors.black,
-                                blurRadius: 10,
-                              )
-                            ]),
+                        style: AppBarText().copyWith(fontSize: 20),
                       ),
                     ),
                     Container(
@@ -141,18 +117,9 @@ class _OpenPage extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       color: const Color.fromRGBO(36, 42, 50, 1),
                       height: height / 20,
-                      child: const Text(
+                      child: Text(
                         "Also Most Popular TVs:",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontFamily: "Kanit",
-                            shadows: <Shadow>[
-                              Shadow(
-                                color: Colors.black,
-                                blurRadius: 10,
-                              )
-                            ]),
+                        style: AppBarText().copyWith(fontSize: 20),
                       ),
                     ),
                     Container(
@@ -174,18 +141,9 @@ class _OpenPage extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       color: const Color.fromRGBO(36, 42, 50, 1),
                       height: height / 18,
-                      child: const Text(
+                      child: Text(
                         "Here more:",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontFamily: "Kanit",
-                            shadows: <Shadow>[
-                              Shadow(
-                                color: Colors.black,
-                                blurRadius: 10,
-                              )
-                            ]),
+                        style: AppBarText().copyWith(fontSize: 20),
                       ),
                     ),
                     Container(
@@ -202,67 +160,35 @@ class _OpenPage extends StatelessWidget {
                               children: [
                                 Container(
                                   //color: Color.fromRGBO(36, 42, 50, 1),
-                                  child: const TabBar(
+                                  child: TabBar(
                                       indicatorColor: Colors.white,
                                       tabs: [
                                         Tab(
                                           child: Text(
                                             "250 Movies",
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Kanit",
-                                                shadows: <Shadow>[
-                                                  Shadow(
-                                                    color: Colors.black,
-                                                    blurRadius: 10,
-                                                  )
-                                                ]),
+                                            style: AppBarText(),
                                           ),
                                         ),
                                         Tab(
                                           child: Text(
                                             "250 TVs",
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Kanit",
-                                                shadows: <Shadow>[
-                                                  Shadow(
-                                                    color: Colors.black,
-                                                    blurRadius: 10,
-                                                  )
-                                                ]),
+                                            style: AppBarText(),
                                           ),
                                         ),
                                         Tab(
                                           child: Text(
                                             "In Theaters",
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Kanit",
-                                                shadows: <Shadow>[
-                                                  Shadow(
-                                                    color: Colors.black,
-                                                    blurRadius: 10,
-                                                  )
-                                                ]),
+                                            style: AppBarText(),
                                           ),
                                         ),
                                         Tab(
                                           child: Text(
                                             "Best BoxOffice",
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: "Kanit",
-                                                shadows: <Shadow>[
-                                                  Shadow(
-                                                    color: Colors.black,
-                                                    blurRadius: 10,
-                                                  )
-                                                ]),
+                                            style: AppBarText(),
                                           ),
                                         )
                                       ]),
@@ -341,7 +267,7 @@ class _OpenPage extends StatelessWidget {
                 ),
               ),
             ),
-            backgroundColor: Colors.black38,
+            backgroundColor: const Color.fromRGBO(36, 42, 50, 1),
           ),
           onRefresh: () => context.read<OpenCubit>().reloadUser(),
         );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import '../models/Top250.dart';
 import '../pages/open_page/cubit/open_cubit.dart';
+import '../utils/app_text_theme.dart';
 
 Widget previewCard(Top250 item, BuildContext context, OpenLoadedState state) {
   final double width = MediaQuery.of(context).size.width;
@@ -46,33 +47,14 @@ Widget previewCard(Top250 item, BuildContext context, OpenLoadedState state) {
                   Flexible(
                     flex: 2,
                     child: ListTile(
-                      title: const Text(
+                      title: Text(
                         "Title:",
-                        style: TextStyle(
-                            color: Colors.white38,
-                            fontSize: 14,
-                            letterSpacing: 2,
-                            fontFamily: "Kanit",
-                            shadows: <Shadow>[
-                              Shadow(
-                                color: Colors.black,
-                                blurRadius: 10,
-                              )
-                            ]),
+                        style: HintTextInCard(),
                       ),
                       subtitle: Text("${item.title}",
                           softWrap: true,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontFamily: "Kanit",
-                              shadows: <Shadow>[
-                                Shadow(
-                                  color: Colors.black,
-                                  blurRadius: 10,
-                                )
-                              ])),
+                          style: AppBarText().copyWith(fontSize: 18)),
                     ),
                   ),
                   Flexible(
@@ -82,31 +64,12 @@ Widget previewCard(Top250 item, BuildContext context, OpenLoadedState state) {
                         Flexible(
                           flex: 2,
                           child: ListTile(
-                            title: const Text(
+                            title: Text(
                               "Release:",
-                              style: TextStyle(
-                                  color: Colors.white38,
-                                  fontSize: 14,
-                                  letterSpacing: 2,
-                                  fontFamily: "Kanit",
-                                  shadows: <Shadow>[
-                                    Shadow(
-                                      color: Colors.black,
-                                      blurRadius: 10,
-                                    )
-                                  ]),
+                              style: HintTextInCard(),
                             ),
                             subtitle: Text("${item.year}",
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontFamily: "Kanit",
-                                    shadows: <Shadow>[
-                                      Shadow(
-                                        color: Colors.black,
-                                        blurRadius: 10,
-                                      )
-                                    ])),
+                                style: AppBarText().copyWith(fontSize: 18)),
                           ),
                         ),
                         Flexible(
@@ -127,55 +90,27 @@ Widget previewCard(Top250 item, BuildContext context, OpenLoadedState state) {
                       Flexible(
                         flex: 2,
                         child: ListTile(
-                          title: const Text(
+                          title: Text(
                             "IMDB: ",
                             textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Colors.white38,
-                                fontSize: 14,
-                                letterSpacing: 2,
-                                fontFamily: "Kanit",
-                                shadows: <Shadow>[
-                                  Shadow(
-                                    color: Colors.black,
-                                    blurRadius: 10,
-                                  )
-                                ]),
+                            style: HintTextInCard(),
                           ),
                           subtitle: Text("${item.imdbrating}",
                               textAlign: TextAlign.left,
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontFamily: "Kanit",
-                                  shadows: <Shadow>[
-                                    Shadow(
-                                      color: Colors.black,
-                                      blurRadius: 10,
-                                    )
-                                  ])),
+                              style: AppBarText().copyWith(fontSize: 18)),
                         ),
                       ),
                       Flexible(
                         flex: 2,
                         child: ListTile(
-                          title: const Text(
+                          title: Text(
                             "Rank:",
                             textAlign: TextAlign.right,
-                            style: TextStyle(
-                              color: Colors.white38,
-                              fontSize: 14,
-                              letterSpacing: 2,
-                              fontFamily: "Kanit",
-                            ),
+                            style: HintTextInCard(),
                           ),
                           subtitle: Text("${item.rank}",
                               textAlign: TextAlign.right,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontFamily: "Kanit",
-                              )),
+                              style: AppBarText().copyWith(fontSize: 18)),
                         ),
                       ),
                     ],
