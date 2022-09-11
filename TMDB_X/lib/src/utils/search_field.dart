@@ -22,21 +22,26 @@ Widget searchField(BuildContext context) {
       fillColor: const Color.fromRGBO(36, 42, 50, 1),
       enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            width: width / 300,
-            color: const Color.fromRGBO(14, 17, 20, 1),
-          )),
+        width: width / 300,
+        color: Colors.white,
+        //color: const Color.fromRGBO(14, 17, 20, 1),
+      )),
       focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            width: width / 300,
-            color: Colors.white38,
-          )),
+        width: width / 300,
+        color: Colors.white38,
+      )),
       hintText: "Input title",
       hintStyle: TextStyle(
-          color: const Color.fromRGBO(14, 17, 20, 1),
+          color: Colors.white,
           fontFamily: "Kanit",
           fontSize: 20,
           letterSpacing: width / 400),
-      prefixIcon: const Icon(Feather.search, size: 32, color: Color.fromRGBO(14, 17, 20, 1),),
+      prefixIcon: const Icon(
+        Feather.search,
+        size: 32,
+        color: Colors.white,
+      ),
       prefixIconColor: const Color.fromRGBO(14, 17, 20, 1),
     ),
   );

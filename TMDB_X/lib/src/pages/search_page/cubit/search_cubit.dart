@@ -20,7 +20,7 @@ class SearchCubit extends Cubit<SearchState> {
     print(value);
     try {
         if (value.length > 0) {
-          //await Future.delayed(const Duration(milliseconds: 200));
+          await Future.delayed(const Duration(milliseconds: 500));
           final search_list = await getSearchList(value);
           emit(SearchLoadedState(search_list));
           print('Search loaded');

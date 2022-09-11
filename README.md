@@ -9,6 +9,8 @@ that could be useful for phone users.
 This page contains information about the most popular films and TV series presented in the carousel of their posters, and then there is a scrollable block with columns about the best films and TV series according to imdb and others.
 <li><b>Search page: </b></br>
 Search for movies, TV series using the IMDB database.
+<li><b>Error page: </b></br>
+Error page with correct navigation.
 </ul>
 
 </p> <p align="left">
@@ -19,24 +21,23 @@ Search for movies, TV series using the IMDB database.
 
 <b> Currently in development:</b></br>
 <ul>
-<li><b>Error page: </b></br>
-Error page without correct navigation and simple decoration.
+<li><b>Movie / TVs page:</b></br>
+Detail information about Movie / TVs.
 <li><b>WatchList page:</b></br>
 The page where the movies will be viewed.
 </ul>
 
 # Update map:
-<p>
-<b>Update at the end of August 2022:</b> 
-<ul>
-<li>The ErrorPage needs improvement;
-<li>Add pictures to OpenPages's AllTimeBoxOffice from kinopoisk API;
-</ul>
 
-<b>Upadate sometime in September 2022:</b>
+<b>Upadate at the end of September 2022:</b>
 <ul>
 <li>Add Movie / TVs page;
 <li>Optimize requests;
+</ul>
+
+<b>Upadate at the end of October 2022:</b>
+<ul>
+<li>Add pictures to OpenPages's AllTimeBoxOffice from kinopoisk API;
 <li>Add "View more" for OpenPagess' tabbar lists
 <li>Possible adding of user's rating;
 </ul>

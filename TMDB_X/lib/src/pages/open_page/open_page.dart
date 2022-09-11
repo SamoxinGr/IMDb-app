@@ -275,9 +275,10 @@ class _OpenPage extends StatelessWidget {
 
       if (state is OpenErrorState) {
         // Throw error if state is UserError
-        return ErrorPage(); //ErrorPage in progress
-      } else
+        return const ErrorPage(exPageName: "OpenPage");
+      } else {
         return Container();
+      }
     });
   }
 }

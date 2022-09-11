@@ -29,7 +29,6 @@ class _SearchPage extends StatelessWidget {
       if (state is SearchInitial) {
         context.read<SearchCubit>().informInitial();
         print("state is initial");
-        //context.read<SearchCubit>().loadSearch("");
         return Scaffold(
           appBar: ScrollAppBar(
             controller: _controller,
@@ -47,19 +46,20 @@ class _SearchPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                searchField(context),
-                SizedBox(
-                  height: height / 50,
+                Flexible(flex: 6, child: searchField(context)),
+                Flexible(
+                  flex: 2,
                   child: Container(),
                 ),
-                Expanded(
+                Flexible(
+                    flex: 8,
                     child: Center(
-                  child: Text(
-                    "Here nothing",
-                    style: AppBarText()
-                        .copyWith(letterSpacing: width / 400, fontSize: 20),
-                  ),
-                ))
+                      child: Text(
+                        "There's nothing here",
+                        style: AppBarText()
+                            .copyWith(letterSpacing: width / 400, fontSize: 20),
+                      ),
+                    ))
               ],
             ),
           ),
@@ -87,15 +87,12 @@ class _SearchPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 searchField(context),
-                SizedBox(
-                  height: height / 50,
-                  child: Container(),
-                ),
                 Expanded(
+                  //flex: 20,
                   child: state.searchList.isEmpty
                       ? Center(
                           child: Text(
-                          "Here nothing",
+                          "Try again",
                           style: AppBarText().copyWith(
                               letterSpacing: width / 400, fontSize: 20),
                         ))
@@ -118,9 +115,11 @@ class _SearchPage extends StatelessWidget {
       }
 
       if (state is SearchErrorState) {
-        return ErrorPage(); //ErrorPage in progress
-      } else
+        return const ErrorPage(
+            exPageName: "SearchPage"); //ErrorPage in progress
+      } else {
         return Container();
+      }
     });
   }
 }
