@@ -32,7 +32,7 @@ Widget searchCard(SearchResult item, BuildContext context, SearchLoadedState sta
                       borderRadius: const BorderRadius.all(Radius.circular(15)),
                       image: DecorationImage(
                           image: NetworkImage("${item.image}"),
-                          fit: BoxFit.fill)),
+                          fit: BoxFit.cover)),
                   //child: Image.network("${item.image}"),
                 ),
               ),
@@ -53,7 +53,7 @@ Widget searchCard(SearchResult item, BuildContext context, SearchLoadedState sta
                       ),
                       subtitle: Text("${item.title}",
                           softWrap: true,
-                          overflow: TextOverflow.ellipsis,
+                          overflow: TextOverflow.clip,
                           style: AppBarText().copyWith(fontSize: 18)),
                     ),
                   ),

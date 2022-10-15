@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
 import '../../utils/app_text_theme.dart';
 import '../error_page.dart';
+import '../movie_page/movie_page.dart';
 import 'cubit/open_cubit.dart';
 import '../../widgets/most_popular_movie_card.dart';
 import '../../widgets/most_popular_tvs_card.dart';
@@ -72,6 +73,7 @@ class _OpenPage extends StatelessWidget {
           strokeWidth: height / 300,
           child: Scaffold(
             appBar: ScrollAppBar(
+              automaticallyImplyLeading: false,
               controller: _controller,
               //backgroundColor: const Color.fromRGBO(16,18,21, 1),  // OLD Color
               backgroundColor: const Color.fromRGBO(36, 42, 50, 1),
@@ -107,7 +109,10 @@ class _OpenPage extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return InkWell(
-                                onTap: () => print("Open MoviePage in Future"),
+                                onLongPress: () {Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => MoviePage(id: '${state.mpmList[index].id}')),
+                                );},
                                 child: mpmCard(
                                     state.mpmList[index], context, state));
                           }),
@@ -131,7 +136,10 @@ class _OpenPage extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return InkWell(
-                                onTap: () => print("Open TVsPage in Future"),
+                                onLongPress: () {Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => MoviePage(id: '${state.mptvsList[index].id}')),
+                                );},
                                 child: mptvsCard(
                                     state.mptvsList[index], context, state));
                           }),
@@ -205,8 +213,10 @@ class _OpenPage extends StatelessWidget {
                                   itemCount: state.movtopList.length,
                                   itemBuilder: (context, index) {
                                     return InkWell(
-                                        onTap: () =>
-                                            print("Open Movie Page in Future"),
+                                        onLongPress: () {Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => MoviePage(id: '${state.movtopList[index].id}')),
+                                        );},
                                         child: previewCard(
                                             state.movtopList[index],
                                             context,
@@ -220,8 +230,10 @@ class _OpenPage extends StatelessWidget {
                                   itemCount: state.tvstopList.length,
                                   itemBuilder: (context, index) {
                                     return InkWell(
-                                        onTap: () =>
-                                            print("Open TVsPage in Future"),
+                                        onLongPress: () {Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => MoviePage(id: '${state.tvstopList[index].id}')),
+                                        );},
                                         child: previewCard(
                                             state.tvstopList[index],
                                             context,
@@ -235,8 +247,10 @@ class _OpenPage extends StatelessWidget {
                                   itemCount: state.theaterList.length,
                                   itemBuilder: (context, index) {
                                     return InkWell(
-                                        onTap: () =>
-                                            print("Open TVsPage in Future"),
+                                        onLongPress: () {Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => MoviePage(id: '${state.theaterList[index].id}')),
+                                        );},
                                         child: preview_releaseCard(
                                             state.theaterList[index],
                                             context,
@@ -250,7 +264,10 @@ class _OpenPage extends StatelessWidget {
                                   itemCount: state.boxList.length,
                                   itemBuilder: (context, index) {
                                     return InkWell(
-                                        onTap: () => print("Picture in Future"),
+                                        onLongPress: () {Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => MoviePage(id: '${state.boxList[index].id}')),
+                                        );},
                                         child: preview_boxCard(
                                             state.boxList[index],
                                             context,

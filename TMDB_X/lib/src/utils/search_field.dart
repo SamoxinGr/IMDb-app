@@ -39,7 +39,7 @@ Widget searchField(BuildContext context) {
           letterSpacing: width / 400),
       prefixIcon: const Icon(
         Feather.search,
-        size: 32,
+        size: 24,
         color: Colors.white,
       ),
       prefixIconColor: const Color.fromRGBO(14, 17, 20, 1),

@@ -5,6 +5,7 @@ import '../../utils/app_text_theme.dart';
 import '../../utils/search_field.dart';
 import '../../widgets/search_card.dart';
 import '../error_page.dart';
+import '../movie_page/movie_page.dart';
 import 'cubit/search_cubit.dart';
 
 class SearchPage extends StatelessWidget {
@@ -12,8 +13,7 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (_) => SearchCubit(), child: const _SearchPage());
+    return BlocProvider(create: (_) => SearchCubit(), child: const _SearchPage());
   }
 }
 
@@ -22,7 +22,7 @@ class _SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScrollController _controller = new ScrollController();
+    ScrollController _controller = ScrollController();
     final double width = MediaQuery.of(context).size.width;
     final double height = MediaQuery.of(context).size.height;
     return BlocBuilder<SearchCubit, SearchState>(builder: (context, state) {
@@ -31,6 +31,7 @@ class _SearchPage extends StatelessWidget {
         print("state is initial");
         return Scaffold(
           appBar: ScrollAppBar(
+            automaticallyImplyLeading: false,
             controller: _controller,
             //backgroundColor: const Color.fromRGBO(16,18,21, 1),  // OLD Color
             backgroundColor: const Color.fromRGBO(36, 42, 50, 1),
@@ -71,6 +72,7 @@ class _SearchPage extends StatelessWidget {
         print("Loading Search");
         return Scaffold(
           appBar: ScrollAppBar(
+            automaticallyImplyLeading: false,
             controller: _controller,
             //backgroundColor: const Color.fromRGBO(16,18,21, 1),  // OLD Color
             backgroundColor: const Color.fromRGBO(36, 42, 50, 1),
@@ -88,7 +90,6 @@ class _SearchPage extends StatelessWidget {
               children: [
                 searchField(context),
                 Expanded(
-                  //flex: 20,
                   child: state.searchList.isEmpty
                       ? Center(
                           child: Text(
@@ -100,8 +101,10 @@ class _SearchPage extends StatelessWidget {
                           itemCount: state.searchList.length,
                           itemBuilder: (context, index) {
                             return InkWell(
-                              onTap: () =>
-                                  print("Open Page with info in Future"),
+                              onLongPress: () {Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => MoviePage(id: '${state.searchList[index].id}')),
+                              );},
                               child: searchCard(
                                   state.searchList[index], context, state),
                             );

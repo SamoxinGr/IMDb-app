@@ -16,6 +16,7 @@ class ErrorPage extends StatelessWidget {
     // handled errors opens dialog box instead new page
     return Scaffold(
       appBar: ScrollAppBar(
+        automaticallyImplyLeading: false,
         controller: _controller,
         backgroundColor: const Color.fromRGBO(16, 18, 21, 0.97),
         title: Text(
